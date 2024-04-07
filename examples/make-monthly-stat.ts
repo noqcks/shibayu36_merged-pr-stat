@@ -8,9 +8,9 @@ async function main(): Promise<void> {
 
   program.parse(process.argv);
 
-  const startDate = parse(program.start, "yyyy/MM", new Date());
-  const endDate = parse(program.end, "yyyy/MM", new Date());
-  const query = program.query as string;
+  const startDate = parse(program.opts().start, "yyyy/MM", new Date());
+  const endDate = parse(program.opts().end, "yyyy/MM", new Date());
+  const query = program.opts().query as string;
 
   const allStats = [];
   for (let start = startDate; start <= endDate; start = addMonths(start, 1)) {
