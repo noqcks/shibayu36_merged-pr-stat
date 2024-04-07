@@ -15,11 +15,11 @@ async function main(): Promise<void> {
 
   program.parse(process.argv);
 
-  const startDate = parseISO(program.start);
-  const endDate = parseISO(program.end);
-  const query = program.query as string;
-  const intervalDays = parseInt(program.intervalDays);
-  const aggregationDays = parseInt(program.aggregationDays);
+  const startDate = parseISO(program.opts().start);
+  const endDate = parseISO(program.opts().end);
+  const query = program.opts().query as string;
+  const intervalDays = parseInt(program.opts().intervalDays);
+  const aggregationDays = parseInt(program.opts().aggregationDays);
 
   const allStats = [];
   for (let start = startDate; start < endDate; start = addDays(start, intervalDays)) {
