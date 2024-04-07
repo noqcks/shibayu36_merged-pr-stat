@@ -106,7 +106,7 @@ async function fetchAllPullRequestsByQuery(searchQuery: string): Promise<PullReq
   let prs: PullRequest[] = [];
   // eslint-disable-next-line no-constant-condition
   while (true) {
-    const data = await graphQLClient.request(query, { after });
+    const data = await graphQLClient.request<{search: {nodes: PullRequestNode[], pageInfo: {endCursor: string, hasNextPage: boolean}}}, {after?: string}>(query, { after });
     prs = prs.concat(
       data.search.nodes.map(
         (p: PullRequestNode) =>
