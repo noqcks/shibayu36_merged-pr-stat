@@ -1,7 +1,7 @@
 import { program } from "commander";
 import { parseISO, add, addDays, format, min } from "date-fns";
 import { execFileSync } from "child_process";
-import csvStringify from "csv-stringify/lib/sync";
+import { stringify } from "csv-stringify/sync";
 
 async function main(): Promise<void> {
   program.requiredOption("--start <date>").requiredOption("--end <date>").requiredOption("--query <query>");
